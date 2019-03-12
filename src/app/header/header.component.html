@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span><a routerLink="/">KBTech</a></span>
+  <span class="spacer"></span>
+  <ul *ngIf="!loggedIn">
+    <li><a mat-raised-button style="background-color: rgb(0, 56, 139)" routerLink="/signin" routerLinkActive="mat-warn">Login</a></li>
+    <li><a mat-raised-button style="background-color: rgb(0, 56, 139)" routerLink="/signup" routerLinkActive="mat-warn">Signup</a></li>
+  </ul>
+  <ul *ngIf="loggedIn">
+    <li>Welcome {{number}}</li>
+    <li><button mat-raised-button color="primary" type="button" (click)="logout()">Logout</button></li>
+    <li *ngIf="type==='user'"><a mat-raised-button color="primary" routerLink="/checkout" >Cart</a></li>
+  </ul>
+</mat-toolbar>
+
+

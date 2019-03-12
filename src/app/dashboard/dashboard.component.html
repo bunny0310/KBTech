@@ -1,0 +1,31 @@
+<span style="text-align: center"><h3>Assign delivery person to the order</h3></span>
+
+<mat-form-field>
+<mat-select placeholder="Filter by order stage" #q>
+    <mat-option *ngFor="let type of types" [value]="type" required>
+      {{type}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-button color="primary" (click)="filter(q.value)">Filter</button>
+
+<mat-accordion multi="true" *ngIf="orders.length>0">
+    <mat-expansion-panel *ngFor="let order of orders">
+      <mat-expansion-panel-header>Order id: {{order._id}}</mat-expansion-panel-header>
+        <b>Details: </b>
+        <br>
+        {{order | json}}
+      <mat-action-row>
+          <div style="float:left">
+              <mat-form-field>
+                  <mat-select placeholder="Delivery person" #q>
+                    <mat-option *ngFor="let d of delivery_users" [value]="d._id" required>
+                      {{d.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-button color="primary" (click)="assignDel(order._id, q.value)">Assign delivery user to this order</button>
+          </div>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>

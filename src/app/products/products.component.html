@@ -1,0 +1,22 @@
+<span style="text-align: center"><h1>Products</h1></span>
+<mat-accordion multi="true" *ngIf="products.length>0">
+    <mat-expansion-panel *ngFor="let product of products">
+      <mat-expansion-panel-header>{{product.name}}</mat-expansion-panel-header>
+        <b>Category: </b> {{product.category}}
+        <br>
+        <b>Addresses: </b> {{product.locations | json}}
+      <mat-action-row>
+          <div style="float:left">
+              <mat-form-field>
+                  <mat-select placeholder="Quantity" #q>
+                    <mat-option *ngFor="let number of numbers" [value]="number" required>
+                      {{number}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-button color="primary" (click)="addToCart(product._id, q.value)">Add to Cart</button>
+          </div>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+

@@ -1,0 +1,18 @@
+<mat-card>
+  <form #signupForm="ngForm" (submit)="createUser(signupForm)">
+      <mat-form-field>
+          <input type="text" matInput name="name" ngModel placeholder="Full Name" #nameField="ngModel" required minlength="6">
+          <mat-error *ngIf="nameField.invalid">Please enter a valid name</mat-error>
+        </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput name="mobile" ngModel placeholder="Mobile number" #mobileField="ngModel" required minlength="10" maxlength="10">
+      <mat-error *ngIf="mobileField.invalid">Please enter a valid mobile number</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+     <input matInput type="password" name="pwd" ngModel placeholder="Password" #pwdField="ngModel" required minlength="6">
+     <mat-error *ngIf="pwdField.invalid">Please enter a valid password</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Signup</button>
+  </form>
+</mat-card>

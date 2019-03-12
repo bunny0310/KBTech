@@ -1,0 +1,22 @@
+<span style="text-align: center"><h3>Update status of orders</h3></span>
+
+<mat-accordion multi="true" *ngIf="orders.length>0">
+    <mat-expansion-panel *ngFor="let order of orders">
+      <mat-expansion-panel-header>Order id: {{order._id}}</mat-expansion-panel-header>
+        <b>Details: </b>
+        <br>
+        {{order | json}}
+      <mat-action-row>
+          <div style="float:left">
+              <mat-form-field>
+                  <mat-select placeholder="Update status" #q>
+                    <mat-option *ngFor="let s of statuses" [value]="s" required>
+                      {{s}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button mat-button color="primary" (click)="updateStatus(order._id, q.value)">Update status</button>
+          </div>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
